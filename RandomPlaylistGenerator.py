@@ -62,26 +62,14 @@ for songs in music_list:
     total_songs = total_songs + 1
     new_music_list.append(songs)
 
-'''
-import vlc
-p = vlc.MediaPlayer(new_music_list[0])
-p.play()
-'''
-import pygame
-import random
-import time
-pygame.mixer.init(44100, -16,2,2048)
-templist = new_music_list.copy()
-temp = templist[-1]
-new_music_list[1:] = new_music_list[0:-1]
-new_music_list[0] = temp
 
-for counter, m in enumerate(new_music_list):
-    print(counter)
-    if (counter == 0):
-        pygame.mixer.music.load(m)
-        pygame.mixer.music.play()
-    else:
-        pygame.mixer.music.queue(m)
+import subprocess
+vlc = "C:/Program Files/VideoLAN/VLC/vlc.exe"
+vlc = vlc.replace("/","\\")
+l1 = list()
+l1.append(vlc)
+for m in new_music_list:
+    m = m.replace("/","\\")
+    l1.append(m)
 
-            
+subprocess.Popen(l1)
