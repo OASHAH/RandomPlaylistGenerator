@@ -5,6 +5,10 @@ import re
 
 #Enter your music directory here:
 directory = "C:/Users/osaid/songs"
+#Enter your music player's directory
+music_player = "C:/Program Files (x86)/MusicBee/MusicBee.exe"
+
+
 music_list = []
 parent_files = []
 for filename in os.scandir(directory):
@@ -64,12 +68,10 @@ for songs in music_list:
 
 
 import subprocess
-vlc = "C:/Program Files/VideoLAN/VLC/vlc.exe"
-vlc = vlc.replace("/","\\")
+music_player = music_player.replace("/","\\")
 l1 = list()
-l1.append(vlc)
+l1.append(music_player)
 for m in new_music_list:
     m = m.replace("/","\\")
     l1.append(m)
-
 subprocess.Popen(l1)
